@@ -1,4 +1,4 @@
-package theory.tarasov.builder;
+package theory.tarasov.model;
 
 public class Product {
     private String name;
