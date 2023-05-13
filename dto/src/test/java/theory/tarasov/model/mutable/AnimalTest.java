@@ -10,6 +10,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AnimalTest {
 
     @Test
+    public void testDefaultConstructor() {
+        var animal = new Animal();
+        assertThat(animal).isNotNull();
+        assertThat(animal.getName()).isNull();
+        assertThat(animal.getBirthDate()).isNull();
+        assertThat(animal.getAnimalType()).isNull();
+    }
+
+    @Test
+    public void testConstructorWithThreeParameters() {
+        var animal = new Animal("Rocky", LocalDate.of(2010, 5, 1), AnimalType.CAPYBARA);
+        assertThat(animal).isNotNull();
+        assertThat(animal.getName()).isEqualTo("Rocky");
+        assertThat(animal.getBirthDate()).isEqualTo(LocalDate.of(2010, 5, 1));
+        assertThat(animal.getAnimalType()).isEqualTo(AnimalType.CAPYBARA);
+    }
+
+    @Test
     public void testGetName() {
         var animal = new Animal("Rocky", LocalDate.of(2010, 5, 1), AnimalType.CAPYBARA);
         assertThat(animal.getName()).isEqualTo("Rocky");
