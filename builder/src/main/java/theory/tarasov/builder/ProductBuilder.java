@@ -1,6 +1,6 @@
 package theory.tarasov.builder;
 
-public interface Builder {
+public interface ProductBuilder {
     void setDescription(String description);
     void setName(String name);
     void setPrice(long price);
