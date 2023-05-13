@@ -32,11 +32,7 @@ public class Animal {
 
     @Override
     public int hashCode() {
-        var hash = 7;
-        hash = 31 * hash + (name != null ? name.hashCode() : 0);
-        hash = 31 * hash + (birthDate != null ? birthDate.hashCode() : 0);
-        hash = 31 * hash + (animalType != null ? animalType.hashCode() : 0);
-        return hash;
+        return Objects.hash(name, birthDate, animalType);
     }
 
     public String getName() {

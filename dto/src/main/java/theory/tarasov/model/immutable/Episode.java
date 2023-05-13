@@ -25,10 +25,7 @@ public class Episode {
 
     @Override
     public int hashCode() {
-        var hash = 7;
-        hash = 31 * hash + (name != null ? name.hashCode() : 0);
-        hash = 31 * hash + Long.hashCode(runningTime);
-        return hash;
+        return Objects.hash(name, runningTime);
     }
 
     public String getName() {
