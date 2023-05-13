@@ -26,6 +26,12 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
+    @Override
+    public String toString() {
+        return "Product [ name = " + name + ", price = " + price
+                + ", description = " + description + ", quantity = " + quantity + ", manufacturer = " + manufacturer;
+    }
+
     public String getDescription() {
         return description;
     }
