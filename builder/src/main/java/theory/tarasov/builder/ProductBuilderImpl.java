@@ -1,5 +1,6 @@
 package theory.tarasov.builder;
 
+import theory.tarasov.model.Product;
 public class ProductBuilderImpl implements ProductBuilder {
 
     private String name;

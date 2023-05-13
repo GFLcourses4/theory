@@ -1,4 +1,9 @@
-package theory.tarasov.builder;
+package theory.tarasov;
+
+
+import theory.tarasov.builder.ProductBuilderImpl;
+import theory.tarasov.builder.ProductManualBuilderImpl;
+import theory.tarasov.director.DirectorImpl;
 
 public class ProductBuilderProcess {
     public static void main(String[] args) {
