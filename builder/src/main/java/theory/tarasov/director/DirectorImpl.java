@@ -1,4 +1,7 @@
-package theory.tarasov.builder;
+package theory.tarasov.director;
+
+import theory.tarasov.builder.ProductBuilder;
+import theory.tarasov.director.Director;
 
 public class DirectorImpl implements Director {
     @Override
