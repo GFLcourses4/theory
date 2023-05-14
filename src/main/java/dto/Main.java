@@ -7,5 +7,6 @@ public class Main {
         UserMapper userMapper = new UserMapper();
         UserDTO userDTO = userMapper.UserToUserDTO(user);
         System.out.println(userDTO);
+
     }
 }
