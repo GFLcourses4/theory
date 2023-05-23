@@ -15,5 +15,7 @@ public class App {
         if(engineeringCalc instanceof EngineeringCalcImpl impl) {
             System.out.println(impl.getCalc() == calc);
         }
+
+
     }
 }

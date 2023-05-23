@@ -5,18 +5,22 @@ import java.util.Map;
 
 class CachedServiceFactory implements DIFactory{
     private final Map<Class<?>, Object> cachedInstances;
-    private final RegisterServiceFactory factory;
-    public CachedServiceFactory(RegisterServiceFactory factory) {
+    private final InstanceRegistry registry;
+    public CachedServiceFactory(InstanceRegistry registry) {
         cachedInstances = new HashMap<>();
-        this.factory = factory;
+        this.registry = registry;
     }
     @Override
     public <T> T createInstance(Class<T> type) {
-        if(cachedInstances.containsKey(type)) return type.cast(cachedInstances.get(type));
-        else {
-            T instance = factory.createInstance(type, this);
-            cachedInstances.put(type, instance);
-            return instance;
-        }
+        return cachedInstances.containsKey(type) ? type.cast(cachedInstances.get(type))
+                : cacheInstance(type);
     }
+
+    private <T> T cacheInstance(Class<T> type) {
+        T instance = type.cast(registry.getCreatorFunction(type).apply(this));
+        cachedInstances.put(type, instance);
+        return instance;
+    }
+
+
 }

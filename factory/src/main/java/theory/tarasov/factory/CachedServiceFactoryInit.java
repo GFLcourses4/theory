@@ -8,10 +8,10 @@ import theory.tarasov.calc.EngineeringCalcImpl;
 class CachedServiceFactoryInit implements ServiceFactoryInitializer {
     private final DIFactory factory;
     public CachedServiceFactoryInit() {
-        RegisterServiceFactory.register(Calc.class, (factory) -> new CalcImpl());
-        RegisterServiceFactory.register(EngineeringCalc.class,
+        ServiceRegistry.register(Calc.class, (factory) -> new CalcImpl());
+        ServiceRegistry.register(EngineeringCalc.class,
                 (factory) -> new EngineeringCalcImpl(factory.createInstance(Calc.class)));
-        factory =  new CachedServiceFactory(new RegisterServiceFactory());
+        factory =  new CachedServiceFactory(new ServiceRegistry());
     }
     @Override
     public DIFactory getFactory() {
