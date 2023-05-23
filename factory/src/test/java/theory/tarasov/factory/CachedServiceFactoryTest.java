@@ -33,7 +33,36 @@ public class CachedServiceFactoryTest {
         assertSame(instance, createdInstance2);
     }
 
+    @Test
+    public void testCreateInstance_WithDependencyInjection() {
+        Class<?> type = MyClass.class;
+        MyClass instance = new MyClass();
+        Function<DIFactory, ?> creator = factory -> instance;
+        ServiceRegistry.register(type, creator);
+        Class<?> secondType = MySecondClass.class;
+        Function<DIFactory, ?> secondCreator = factory -> new MySecondClass(factory.createInstance(MyClass.class));
+        ServiceRegistry.register(secondType, secondCreator);
+        MySecondClass createdInstance1 = (MySecondClass) factory.createInstance(secondType);
+        MyClass createdInstance2 = (MyClass) factory.createInstance(type);
+        assertNotNull(createdInstance1);
+        assertNotNull(createdInstance2);
+        assertSame(createdInstance1.getMyClass(), createdInstance2);
+
+    }
+
     private static class MyClass {
         // Test class
+    }
+
+    private static class MySecondClass {
+        private final MyClass myClass;
+
+        private MySecondClass(MyClass myClass) {
+            this.myClass = myClass;
+        }
+
+        MyClass getMyClass() {
+            return myClass;
+        }
     }
 }
