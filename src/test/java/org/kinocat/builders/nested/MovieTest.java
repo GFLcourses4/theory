@@ -1,8 +1,7 @@
-package org.kinocat.builder;
+package org.kinocat.builders.nested;
 
 import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class MovieTest {
 

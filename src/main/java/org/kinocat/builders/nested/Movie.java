@@ -1,4 +1,4 @@
-package org.kinocat.builder;
+package org.kinocat.builders.nested;
 
 import java.util.Objects;
 

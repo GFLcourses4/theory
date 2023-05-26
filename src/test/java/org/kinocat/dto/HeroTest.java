@@ -13,6 +13,7 @@ public class HeroTest {
     public void testEquality() {
         Hero expectedHero = new Hero(name, strength, 20, 10, 1000);
         Hero actualHero = new Hero(name, strength, 20, 10, 1000);
+
         assertEquals(expectedHero, actualHero);
     }
 
