@@ -12,25 +12,20 @@ public class Main {
         databaseService.fillDatabase();
 
         System.out.println("==========Work with service:==========");
-        databaseService.getUserById(1);
-        databaseService.getUserById(1);
-        databaseService.getUserById(2);
-        databaseService.getUserById(2);
-        databaseService.getUserById(3);
-        databaseService.getUserById(3);
-        databaseService.getUserById(4);
-        databaseService.getUserById(4);
+        test(databaseService);
 
         System.out.println();
 
         System.out.println("==========Work with proxy:==========");
-        databaseServiceProxy.getUserById(1);
-        databaseServiceProxy.getUserById(1);
-        databaseServiceProxy.getUserById(2);
-        databaseServiceProxy.getUserById(2);
-        databaseServiceProxy.getUserById(3);
-        databaseServiceProxy.getUserById(3);
-        databaseServiceProxy.getUserById(4);
-        databaseServiceProxy.getUserById(4);
+        test(databaseServiceProxy);
+    }
+
+    private static void test(DatabaseAccessInterface object){
+        for(int i = 0; i < 2; i++) {
+            object.getUserById(1);
+            object.getUserById(2);
+            object.getUserById(3);
+            object.getUserById(4);
+        }
     }
 }
