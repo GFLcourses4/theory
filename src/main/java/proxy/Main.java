@@ -8,7 +8,7 @@ package proxy;
 public class Main {
     public static void main(String[] args) {
         DatabaseAccessService databaseService = new DatabaseAccessService();
-        DatabaseAccessProxy databaseServiceProxy = new DatabaseAccessProxy(databaseService);
+        DatabaseAccessServiceProxy databaseServiceProxy = new DatabaseAccessServiceProxy(databaseService);
         databaseService.fillDatabase();
 
         System.out.println("==========Work with service:==========");

@@ -2,11 +2,11 @@ package proxy;
 
 import java.util.HashMap;
 
-public class DatabaseAccessProxy implements DatabaseAccessInterface{
+public class DatabaseAccessServiceProxy implements DatabaseAccessInterface{
     private final DatabaseAccessService databaseAccessService;
     private HashMap<Integer, User> cache = new HashMap<>();
 
-    public DatabaseAccessProxy(DatabaseAccessService databaseAccessService){
+    public DatabaseAccessServiceProxy(DatabaseAccessService databaseAccessService){
         this.databaseAccessService = databaseAccessService;
     }
 
