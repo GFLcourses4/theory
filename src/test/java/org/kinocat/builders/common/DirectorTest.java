@@ -2,6 +2,8 @@ package org.kinocat.builders.common;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class DirectorTest {
     @Test
     public void testBuildProcess() {
@@ -21,6 +23,11 @@ public class DirectorTest {
         ruBuilder.domain("localDomain");
         RemoteUser remoteUser = ruBuilder.getResult();
         System.out.println(remoteUser);
+
+        org.junit.Assert.assertArrayEquals(
+                new String[]{"localDomain", "default", "default"},
+                new String[]{remoteUser.getDomain(), remoteUser.getLogin(), remoteUser.getPassword()}
+        );
     }
 
 }
