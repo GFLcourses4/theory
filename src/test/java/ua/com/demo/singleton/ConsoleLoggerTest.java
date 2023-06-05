@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoggerTest {
+public class ConsoleLoggerTest {
 
-    private Logger logger;
+    private Logger consoleLogger;
 
 
     @Before
-    public void setUp() throws Exception {
-        logger = Logger.getLogger();
+    public void setUp() {
+        consoleLogger = ConsoleLogger.getLogger();
     }
 
     @Test
@@ -19,7 +19,7 @@ public class LoggerTest {
         String infoLogMessage = "User created";
         LogType logType = LogType.INFO;
 
-        Assert.assertEquals("[INFO   ] --> User created", logger.log(infoLogMessage, logType));
+        Assert.assertEquals("[INFO   ] --> User created", consoleLogger.log(infoLogMessage, logType));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class LoggerTest {
         String warningLogMessage = "User already exists";
         LogType logType = LogType.WARNING;
 
-        Assert.assertEquals("[WARNING] --> User already exists", logger.log(warningLogMessage, logType));
+        Assert.assertEquals("[WARNING] --> User already exists", consoleLogger.log(warningLogMessage, logType));
     }
 
     @Test
@@ -35,14 +35,14 @@ public class LoggerTest {
         String errorLogMessage = "Invalid user input";
         LogType logType = LogType.ERROR;
 
-        Assert.assertEquals("[ERROR  ] --> Invalid user input", logger.log(errorLogMessage, logType));
+        Assert.assertEquals("[ERROR  ] --> Invalid user input", consoleLogger.log(errorLogMessage, logType));
     }
 
     @Test
     public void testSingletonEquality() {
-        Logger theLogger = Logger.getLogger();
+        Logger theConsoleLogger = ConsoleLogger.getLogger();
 
-        Assert.assertSame(logger, theLogger);
+        Assert.assertSame(consoleLogger, theConsoleLogger);
     }
 
 }
