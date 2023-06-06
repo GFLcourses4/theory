@@ -3,7 +3,7 @@ package theory.tarasov.singleton;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-public class FunctionAreaFinderImpl implements FunctionAreaFinder {
+class FunctionAreaFinderImpl implements FunctionAreaFinder {
     @Override
     public double calculate(Function<Double, Double> function, double start, double end, int numOfPoints) {
         return Math.round(calculateTrapezoidalArea(function, start, end, numOfPoints) * 1000) / 1000D;
