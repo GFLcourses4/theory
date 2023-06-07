@@ -2,6 +2,8 @@ package theory.tarasov.factory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import theory.tarasov.factory.registry.InstanceRegistry;
+import theory.tarasov.factory.registry.ServiceRegistry;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -2,6 +2,8 @@ package theory.tarasov.factory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import theory.tarasov.exception.UnregisteredClassException;
+import theory.tarasov.factory.registry.ServiceRegistry;
 
 import java.util.function.Function;
 
@@ -26,6 +28,18 @@ public class ServiceRegistryTest {
 
         assertNotNull(retrievedCreator);
         assertSame(creator, retrievedCreator);
+    }
+
+    @Test
+    public void testGetCreatorFunction_UnregisteredClassException() {
+        Class<?> unregisteredType = UnregisteredClass.class;
+
+        assertThrows(UnregisteredClassException.class, () ->
+                registry.getCreatorFunction(unregisteredType));
+    }
+
+
+    private static class UnregisteredClass {
     }
 
 
