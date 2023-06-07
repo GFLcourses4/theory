@@ -1,4 +1,6 @@
-package theory.tarasov.factory;
+package theory.tarasov.factory.registry;
+
+import theory.tarasov.factory.DIFactory;
 
 import java.util.function.Function;
 
