@@ -1,7 +1,10 @@
 package theory.tarasov.factory;
 
+import theory.tarasov.factory.registry.InstanceRegistry;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 class CachedServiceFactory implements DIFactory{
     private final Map<Class<?>, Object> cachedInstances;
@@ -12,8 +15,8 @@ class CachedServiceFactory implements DIFactory{
     }
     @Override
     public <T> T createInstance(Class<T> type) {
-        return cachedInstances.containsKey(type) ? type.cast(cachedInstances.get(type))
-                : cacheInstance(type);
+        return Optional.ofNullable(cachedInstances.get(type))
+                .map(type::cast).orElseGet(() -> cacheInstance(type));
     }
 
     private <T> T cacheInstance(Class<T> type) {

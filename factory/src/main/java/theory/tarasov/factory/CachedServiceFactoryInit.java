@@ -4,6 +4,7 @@ import theory.tarasov.calc.Calc;
 import theory.tarasov.calc.CalcImpl;
 import theory.tarasov.calc.EngineeringCalc;
 import theory.tarasov.calc.EngineeringCalcImpl;
+import theory.tarasov.factory.registry.ServiceRegistry;
 
 class CachedServiceFactoryInit implements ServiceFactoryInitializer {
     private final DIFactory factory;
