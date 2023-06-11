@@ -7,20 +7,21 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class InvocationHandlerImpl implements InvocationHandler {
-    private final Object target;
+
+public class InvocationHandlerImpl<T> implements InvocationHandler {
+    private final T target;
     private final Logger logger;
 
-    InvocationHandlerImpl(Object target) {
+    InvocationHandlerImpl(T target) {
         this.target = target;
         logger = LoggerFactory.getLogger(InvocationHandlerImpl.class);
     }
 
     @Override
     public Object invoke(Object o, Method method, Object[] args) {
-        logger.info("Executing method {} in class {} with arguments {}", method.getName(), target.getClass().getSimpleName(), args);
+        logger.info(DynamicProxyLogMessage.EXECUTING_METHOD.getMessage(), method.getName(), target.getClass().getSimpleName(), args);
         var result = invokeMethod(method, args);
-        logger.info("Method execution completed in class {}: Result - {}", target.getClass().getSimpleName(), result);
+        logger.info(DynamicProxyLogMessage.METHOD_EXECUTION_COMPLETED.getMessage(), target.getClass().getSimpleName(), result);
         return result;
     }
 
@@ -36,12 +37,12 @@ public class InvocationHandlerImpl implements InvocationHandler {
     }
 
     private void handleIllegalAccessException(Method method, IllegalAccessException ex) {
-        logger.error("Method execution failed due to illegal access in class {}: {}", target.getClass().getSimpleName(), method.getName(), ex);
+        logger.error(DynamicProxyLogMessage.ILLEGAL_ACCESS_EXCEPTION.getMessage(), target.getClass().getSimpleName(), method.getName(), ex);
         throw new RuntimeException(ex);
     }
 
     private void handleInvocationTargetException(Method method, InvocationTargetException ex) {
-        logger.error("Method execution failed in class {}: {}", target.getClass().getSimpleName(), method.getName(), ex.getCause());
+        logger.error(DynamicProxyLogMessage.INVOCATION_TARGET_EXCEPTION.getMessage(), target.getClass().getSimpleName(), method.getName(), ex.getCause());
         throw new RuntimeException(ex.getCause());
     }
 }
