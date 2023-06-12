@@ -4,7 +4,7 @@ package theory.tarasov;
 import org.slf4j.LoggerFactory;
 import theory.tarasov.service.CelsiusToFahrenheit;
 import theory.tarasov.service.TemperatureConverter;
-import theory.tarasov.service.dynamicproxy.DynamicFactoryProvider;
+import theory.tarasov.service.dynamicproxy.DynamicProxyProvider;
 import theory.tarasov.service.proxy.TemperatureConverterProxy;
 
 public class App {
@@ -13,7 +13,7 @@ public class App {
         var target = new CelsiusToFahrenheit();
 
 
-        var dynamicProxy = DynamicFactoryProvider.createProxy(target, TemperatureConverter.class, proxy_logger);
+        var dynamicProxy = DynamicProxyProvider.createProxy(target, TemperatureConverter.class, proxy_logger);
         dynamicProxy.convert(55);
         dynamicProxy.convert(66);
 
