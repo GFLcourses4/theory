@@ -1,16 +1,16 @@
 package theory.tarasov.service.proxy;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import theory.tarasov.service.TemperatureConverter;
 
 public class TemperatureConverterProxy implements TemperatureConverter {
     private final Logger logger;
     private final TemperatureConverter converter;
 
-    public TemperatureConverterProxy(TemperatureConverter converter) {
+    public TemperatureConverterProxy(Logger logger, TemperatureConverter converter) {
+        this.logger = logger;
         this.converter = converter;
-        logger = LoggerFactory.getLogger(TemperatureConverterProxy.class);
+
     }
 
     @Override

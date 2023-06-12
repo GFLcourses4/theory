@@ -1,7 +1,6 @@
 package theory.tarasov.service.dynamicproxy;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -12,9 +11,9 @@ public class InvocationHandlerImpl<T> implements InvocationHandler {
     private final T target;
     private final Logger logger;
 
-    InvocationHandlerImpl(T target) {
+    InvocationHandlerImpl(T target, Logger logger) {
         this.target = target;
-        logger = LoggerFactory.getLogger(InvocationHandlerImpl.class);
+        this.logger = logger;
     }
 
     @Override
