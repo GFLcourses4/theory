@@ -1,6 +1,6 @@
 package theory.tarasov;
 
-import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import theory.tarasov.service.CelsiusToFahrenheit;
 import theory.tarasov.service.TemperatureConverter;

@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
-public class InvocationHandlerImpl<T> implements InvocationHandler {
+class InvocationHandlerImpl<T> implements InvocationHandler {
     private final T target;
     private final Logger logger;
 
