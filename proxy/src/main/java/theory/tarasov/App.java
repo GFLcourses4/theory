@@ -5,7 +5,8 @@ import org.slf4j.LoggerFactory;
 import theory.tarasov.service.CelsiusToFahrenheit;
 import theory.tarasov.service.TemperatureConverter;
 import theory.tarasov.service.dynamicproxy.DynamicProxyProvider;
-import theory.tarasov.service.proxy.TemperatureConverterProxy;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
 
 public class App {
     public static void main(String[] args) {
@@ -17,8 +18,11 @@ public class App {
         dynamicProxy.convert(55);
         dynamicProxy.convert(66);
 
-        var proxy = new TemperatureConverterProxy(proxy_logger, target);
-        proxy.convert(55);
-        proxy.convert(66);
+
+
+        var executorService = Executors.newFixedThreadPool(50);
+        IntStream.rangeClosed(1, 50).forEach( v -> executorService.execute(() -> dynamicProxy.convert(v)));
+        executorService.shutdown();
     }
+
 }
